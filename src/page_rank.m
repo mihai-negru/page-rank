@@ -45,14 +45,16 @@ function [page_rank_iter, page_rank_alg] = page_rank(filename, damp_fact, eps)
         page_num = length(page_rank_iter);
 
         % Print in the out stream the number of processed pages
-        fprintf(fout, "%d\n", page_num);
+        fprintf(fout, "Number of pages: %d\n\n", page_num);
         
         % Print the page rank vector calculated using iterative method
-        fprintf(fout, "%0.6f\n", page_rank_iter);
+        fprintf(fout, "Iterative method:\n");
+        fprintf(fout, "%0.10f\n", page_rank_iter);
         fprintf(fout, "\n");
 
         % Print the page rank vector calculated using algebrical method
-        fprintf(fout, "%0.6f\n", page_rank_alg);
+        fprintf(fout, "Algebrical method:\n");
+        fprintf(fout, "%0.10f\n", page_rank_alg);
         fprintf(fout, "\n");
 
         % Open filename to read param1 and param2
@@ -96,9 +98,10 @@ function [page_rank_iter, page_rank_alg] = page_rank(filename, damp_fact, eps)
             % Sort ranking matrix in descend order by their page ranks
             page_rank = sortrows(page_rank, 'descend');
 
-            % Print in the out stream the ranking matrix 
+            % Print in the out stream the ranking matrix
+            fprintf(fout, "Rankings:\n");
             for iter_i = 1 : page_num
-                fprintf(fout, "%d %d %0.6f\n", iter_i, page_rank(iter_i, 2), page_rank(iter_i, 3));
+                fprintf(fout, "%d %d %0.10f\n", iter_i, page_rank(iter_i, 2), page_rank(iter_i, 3));
             end
     
             % Close the out stream file
